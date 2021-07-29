@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lifood/app/components/splash/splashButton.dart';
-import 'package:lifood/app/config/app_image_assets.dart';
-import 'package:lifood/app/config/app_textstyles.dart';
+import '../../../app/config/app_textstyles.dart';
+import '../../../app/config/app_routes_name.dart';
+import '../../../app/config/app_image_assets.dart';
+import '../../../app/components/splash/splashButton.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({Key key}) : super(key: key);
@@ -14,6 +15,7 @@ class SplashView extends StatelessWidget {
           children: <Widget>[
             Image(
               fit: BoxFit.fill,
+              filterQuality: FilterQuality.high,
               height: MediaQuery.of(context).size.height - 25,
               width: MediaQuery.of(context).size.width,
               image: AssetImage(AppImagesAssets.splashImagePath),
@@ -43,9 +45,15 @@ class SplashView extends StatelessWidget {
                     children: <Widget>[
                       SplashButton(
                         text: 'Sign Up',
+                        onTap: () => Navigator.of(context).pushReplacementNamed(
+                          AppRoutesNames.toRegisterRoute,
+                        ),
                       ),
                       SplashButton(
                         text: 'Sign In',
+                        onTap: () => Navigator.of(context).pushReplacementNamed(
+                          AppRoutesNames.toLoginRoute,
+                        ),
                       ),
                     ],
                   ),
