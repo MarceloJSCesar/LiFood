@@ -1,10 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:lifood/app/components/auth/auth_button.dart';
-import 'package:lifood/app/components/auth/auth_field.dart';
-import 'package:lifood/app/config/app_image_assets.dart';
-import 'package:lifood/app/config/app_textstyles.dart';
+import '../../../app/config/app_textstyles.dart';
+import '../../../app/config/app_routes_name.dart';
+import '../../../app/config/app_image_assets.dart';
+import '../../../app/components/auth/auth_field.dart';
+import '../../../app/components/auth/auth_button.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key key}) : super(key: key);
@@ -85,6 +86,19 @@ class _RegisterViewState extends State<RegisterView> {
                                 isEmail: false,
                                 isPassword: true,
                                 controller: _passwordController,
+                              ),
+                              GestureDetector(
+                                onTap: () =>
+                                    Navigator.of(context).pushReplacementNamed(
+                                  AppRoutesNames.toLoginRoute,
+                                ),
+                                child: Container(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    'Already have an account',
+                                    style: AppTextStyles.authBottomTextStyle,
+                                  ),
+                                ),
                               ),
                               SizedBox(
                                 height: 16,
