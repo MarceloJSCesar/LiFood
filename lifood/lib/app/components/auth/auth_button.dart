@@ -3,15 +3,17 @@ import 'package:lifood/app/config/app_textstyles.dart';
 
 class AuthButton extends StatelessWidget {
   final String text;
+  final Function onTap;
   const AuthButton({
     Key key,
     this.text,
+    this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => onTap(),
       child: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: 25,
