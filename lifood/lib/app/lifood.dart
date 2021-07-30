@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lifood/app/config/app_routes_name.dart';
-import 'package:lifood/app/views/auth/login_view.dart';
-import 'package:lifood/app/views/auth/register_view.dart';
 import 'views/splash/splash_view.dart';
+import '../app/views/auth/login_view.dart';
+import '../app/config/app_routes_name.dart';
+import '../app/views/auth/register_view.dart';
 
 class LiFood extends StatelessWidget {
   const LiFood({Key key}) : super(key: key);
