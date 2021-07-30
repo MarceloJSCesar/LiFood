@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'views/splash/splash_view.dart';
+import '../app/views/home/home_view.dart';
 import '../app/views/auth/login_view.dart';
 import '../app/config/app_routes_name.dart';
+import '../app/views/splash/splash_view.dart';
 import '../app/views/auth/register_view.dart';
 
 class LiFood extends StatelessWidget {
@@ -11,11 +12,12 @@ class LiFood extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutesNames.initialRoute,
+      initialRoute: AppRoutesNames.toInitialRoute,
       routes: {
-        AppRoutesNames.initialRoute: (_) => SplashView(),
-        AppRoutesNames.toLoginRoute: (_) => LoginView(),
-        AppRoutesNames.toRegisterRoute: (_) => RegisterView(),
+        AppRoutesNames.toInitialRoute: (_) => SplashView(),
+        AppRoutesNames.toHomeView: (_) => HomeView(),
+        AppRoutesNames.toLoginView: (_) => LoginView(),
+        AppRoutesNames.toRegisterView: (_) => RegisterView(),
       },
     );
   }

@@ -2,13 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:lifood/app/components/auth/auth_button.dart';
-import 'package:lifood/app/components/auth/auth_field.dart';
-import 'package:lifood/app/config/app_image_assets.dart';
-import 'package:lifood/app/config/app_routes_name.dart';
-import 'package:lifood/app/config/app_textstyles.dart';
-import 'package:lifood/app/controllers/auth/auth_controller.dart';
-import 'package:lifood/app/services/auth/auth_service.dart';
+import '../../../app/config/app_textstyles.dart';
+import '../../../app/config/app_routes_name.dart';
+import '../../../app/config/app_image_assets.dart';
+import '../../../app/services/auth/auth_service.dart';
+import '../../../app/components/auth/auth_field.dart';
+import '../../../app/components/auth/auth_button.dart';
+import '../../../app/controllers/auth/auth_controller.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key key}) : super(key: key);
@@ -98,7 +98,7 @@ class _LoginViewState extends State<LoginView> {
                                 GestureDetector(
                                   onTap: () => Navigator.of(context)
                                       .pushReplacementNamed(
-                                    AppRoutesNames.toRegisterRoute,
+                                    AppRoutesNames.toRegisterView,
                                   ),
                                   child: Container(
                                     alignment: Alignment.centerRight,
@@ -122,11 +122,15 @@ class _LoginViewState extends State<LoginView> {
                                     );
                                     print(user);
                                     _authController.disableIsLoading();
+                                    Navigator.of(context).pushReplacementNamed(
+                                      AppRoutesNames.toHomeView,
+                                    );
                                   },
                                 ),
                                 SizedBox(
                                   height: 10,
                                 ),
+                                /*
                                 AuthButton(
                                   text: 'Logout',
                                   isLoading: _authController.isLoading,
@@ -137,6 +141,7 @@ class _LoginViewState extends State<LoginView> {
                                     print('tapped');
                                   },
                                 ),
+                                */
                               ],
                             ),
                           ),

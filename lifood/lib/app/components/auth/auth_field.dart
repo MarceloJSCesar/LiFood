@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifood/app/config/app_textstyles.dart';
-import 'package:lifood/app/controllers/auth/auth_controller.dart';
+import '../../../app/config/app_textstyles.dart';
 
 class AuthField extends StatelessWidget {
   final String label;

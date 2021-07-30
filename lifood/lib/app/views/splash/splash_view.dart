@@ -46,13 +46,13 @@ class SplashView extends StatelessWidget {
                       SplashButton(
                         text: 'Sign Up',
                         onTap: () => Navigator.of(context).pushReplacementNamed(
-                          AppRoutesNames.toRegisterRoute,
+                          AppRoutesNames.toRegisterView,
                         ),
                       ),
                       SplashButton(
                         text: 'Sign In',
                         onTap: () => Navigator.of(context).pushReplacementNamed(
-                          AppRoutesNames.toLoginRoute,
+                          AppRoutesNames.toLoginView,
                         ),
                       ),
                     ],

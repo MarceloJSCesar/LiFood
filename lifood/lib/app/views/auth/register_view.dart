@@ -2,13 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:lifood/app/controllers/auth/auth_controller.dart';
-import 'package:lifood/app/services/auth/auth_service.dart';
 import '../../../app/config/app_textstyles.dart';
 import '../../../app/config/app_routes_name.dart';
 import '../../../app/config/app_image_assets.dart';
+import '../../../app/services/auth/auth_service.dart';
 import '../../../app/components/auth/auth_field.dart';
 import '../../../app/components/auth/auth_button.dart';
+import '../../../app/controllers/auth/auth_controller.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key key}) : super(key: key);
@@ -109,7 +109,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 GestureDetector(
                                   onTap: () => Navigator.of(context)
                                       .pushReplacementNamed(
-                                    AppRoutesNames.toLoginRoute,
+                                    AppRoutesNames.toLoginView,
                                   ),
                                   child: Container(
                                     alignment: Alignment.centerRight,
@@ -133,6 +133,9 @@ class _RegisterViewState extends State<RegisterView> {
                                     );
                                     print(user);
                                     _authController.disableIsLoading();
+                                    Navigator.of(context).pushReplacementNamed(
+                                      AppRoutesNames.toHomeView,
+                                    );
                                   },
                                   text: 'Sign Up',
                                 ),
