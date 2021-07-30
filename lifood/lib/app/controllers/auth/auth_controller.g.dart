@@ -25,6 +25,21 @@ mixin _$AuthController on AuthControllerBase, Store {
     });
   }
 
+  final _$isLoadingAtom = Atom(name: 'AuthControllerBase.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
   final _$AuthControllerBaseActionController =
       ActionController(name: 'AuthControllerBase');
 
@@ -40,9 +55,32 @@ mixin _$AuthController on AuthControllerBase, Store {
   }
 
   @override
+  void enableIsLoading() {
+    final _$actionInfo = _$AuthControllerBaseActionController.startAction(
+        name: 'AuthControllerBase.enableIsLoading');
+    try {
+      return super.enableIsLoading();
+    } finally {
+      _$AuthControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void disableIsLoading() {
+    final _$actionInfo = _$AuthControllerBaseActionController.startAction(
+        name: 'AuthControllerBase.disableIsLoading');
+    try {
+      return super.disableIsLoading();
+    } finally {
+      _$AuthControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-isPasswordVisible: ${isPasswordVisible}
+isPasswordVisible: ${isPasswordVisible},
+isLoading: ${isLoading}
     ''';
   }
 }

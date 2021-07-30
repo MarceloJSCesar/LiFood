@@ -123,13 +123,16 @@ class _RegisterViewState extends State<RegisterView> {
                                   height: 16,
                                 ),
                                 AuthButton(
+                                  isLoading: _authController.isLoading,
                                   onTap: () async {
-                                    final user = await _authService.login(
+                                    _authController.enableIsLoading();
+                                    final user = await _authService.register(
                                       email: 'eve.holt@reqres.in',
                                       name: _nameController.text,
                                       password: 'cityslicka',
                                     );
                                     print(user);
+                                    _authController.disableIsLoading();
                                   },
                                   text: 'Sign Up',
                                 ),

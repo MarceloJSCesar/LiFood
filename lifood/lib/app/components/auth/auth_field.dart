@@ -25,7 +25,11 @@ class AuthField extends StatelessWidget {
       children: <Widget>[
         TextField(
           controller: controller,
-          obscureText: isPassword ? isPasswordVisible : false,
+          obscureText: isPassword
+              ? isPasswordVisible
+                  ? false
+                  : true
+              : false,
           textInputAction:
               isPassword ? TextInputAction.done : TextInputAction.next,
           keyboardType:

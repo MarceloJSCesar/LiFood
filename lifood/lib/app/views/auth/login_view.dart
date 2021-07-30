@@ -8,6 +8,7 @@ import 'package:lifood/app/config/app_image_assets.dart';
 import 'package:lifood/app/config/app_routes_name.dart';
 import 'package:lifood/app/config/app_textstyles.dart';
 import 'package:lifood/app/controllers/auth/auth_controller.dart';
+import 'package:lifood/app/services/auth/auth_service.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key key}) : super(key: key);
@@ -17,10 +18,10 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  final _authService = AuthService();
   final _authController = AuthController();
 
   @override
@@ -112,6 +113,29 @@ class _LoginViewState extends State<LoginView> {
                                 ),
                                 AuthButton(
                                   text: 'Sign In',
+                                  isLoading: _authController.isLoading,
+                                  onTap: () async {
+                                    _authController.enableIsLoading();
+                                    final user = await _authService.login(
+                                      email: 'eve.holt@reqres.in',
+                                      password: 'cityslicka',
+                                    );
+                                    print(user);
+                                    _authController.disableIsLoading();
+                                  },
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                AuthButton(
+                                  text: 'Logout',
+                                  isLoading: _authController.isLoading,
+                                  onTap: () async {
+                                    _authController.enableIsLoading();
+                                    await _authService.logout('TOKEN', 'NAME');
+                                    _authController.disableIsLoading();
+                                    print('tapped');
+                                  },
                                 ),
                               ],
                             ),
