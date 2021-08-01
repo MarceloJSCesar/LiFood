@@ -25,4 +25,17 @@ class AppTextStyles {
     fontSize: 14,
     color: Colors.grey,
   );
+  // home
+  static final TextStyle homeDateTextStyle = GoogleFonts.poppins(
+    fontSize: 18,
+    color: Colors.white,
+  );
+  static final TextStyle homeFieldTextStyle = GoogleFonts.poppins(
+    fontSize: 16,
+    color: Colors.white,
+  );
+  static final TextStyle homeTitleTextStyle = GoogleFonts.poppins(
+    fontSize: 22,
+    color: Colors.white,
+  );
 }
