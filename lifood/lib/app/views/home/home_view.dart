@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lifood/app/components/custom_circular_progress_indicator.dart';
-import 'package:lifood/app/services/auth/auth_service.dart';
-import 'package:lifood/app/views/auth/login_view.dart';
+import '../../../app/views/auth/login_view.dart';
+import '../../../app/components/home/home_body.dart';
+import '../../../app/services/auth/auth_service.dart';
+import '../../../app/components/custom_circular_progress_indicator.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key key}) : super(key: key);
@@ -23,7 +24,12 @@ class _HomeViewState extends State<HomeView> {
           default:
             if (snapshot.data['name'] != null &&
                 snapshot.data['token'] != null) {
-              return Scaffold();
+              return Scaffold(
+                backgroundColor: Colors.black,
+                body: SafeArea(
+                  child: HomeBody(),
+                ),
+              );
             } else {
               return LoginView();
             }
