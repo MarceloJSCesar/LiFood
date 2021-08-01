@@ -29,7 +29,7 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: RecipeApi.getRecipe(),
+      future: _homeService.getListRecipies(),
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
@@ -74,7 +74,8 @@ class _HomeBodyState extends State<HomeBody> {
                     SizedBox(height: 10),
                     SearchField(),
                     BodyTitle(),
-                    Text(snapshot.data.toString()),
+                    for (int i = 0; i < snapshot.data.length; i++)
+                      Text(snapshot.data[i]['name']),
                   ],
                 ),
               );

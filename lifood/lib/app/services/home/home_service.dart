@@ -16,30 +16,14 @@ class HomeService implements IHome {
     };
     final response = await http.get(api, headers: headers);
     if (response.statusCode == 200) {
+      List dataList = [];
       Map dataReived = json.decode(response.body);
+      for (var i in dataReived['feed']) {
+        dataList.add(i['content']['details']);
+      }
+      return dataList;
+    } else {
+      return null;
     }
-    final dataList = [];
-  }
-}
-
-class RecipeApi {
-  static Future getRecipe() async {
-    var uri = Uri.https('yummly2.p.rapidapi.com', '/feeds/list',
-        {"limit": "18", "start": "0", "tag": "list.recipe.popular"});
-
-    final response = await http.get(uri, headers: {
-      "x-rapidapi-key": "92e1c8bcd1msh33dce8bdf8dfb9ep1de753jsn9689afea0e83",
-      "x-rapidapi-host": "yummly2.p.rapidapi.com",
-      "useQueryString": "true"
-    });
-
-    print(response.statusCode);
-    Map data = jsonDecode(response.body);
-    List _temp = [];
-
-    for (var i in data['feed']) {
-      _temp.add(i['content']['details']);
-    }
-    return _temp;
   }
 }

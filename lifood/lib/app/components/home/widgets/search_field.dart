@@ -10,6 +10,7 @@ class SearchField extends StatelessWidget {
       style: AppTextStyles.homeFieldTextStyle,
       decoration: InputDecoration(
         hintText: 'Search for food',
+        hintStyle: TextStyle(color: Colors.grey),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(
