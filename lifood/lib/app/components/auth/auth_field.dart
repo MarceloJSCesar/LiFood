@@ -36,6 +36,9 @@ class AuthField extends StatelessWidget {
           style: AppTextStyles.authFieldTextStyle,
           decoration: InputDecoration(
             labelText: label,
+            prefixIcon: isPassword
+                ? Icon(Icons.security)
+                : Icon(isEmail ? Icons.email : Icons.person),
             suffixIcon: isPassword
                 ? IconButton(
                     icon: Icon(

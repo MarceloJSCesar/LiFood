@@ -20,10 +20,9 @@ class AuthService extends IAuth {
       final nameExist = _localStorage.getString('NAME');
       if (nameExist != null) {
         await _localStorage.remove('NAME');
-      } else {
-        await _localStorage.setString('NAME', name);
-        await _localStorage.setString('TOKEN', dataReceived['token']);
       }
+      await _localStorage.setString('NAME', name);
+      await _localStorage.setString('TOKEN', dataReceived['token']);
       print('id: ${dataReceived['id']}, token: ${dataReceived['token']}');
       return User(
         name: name,
