@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../app/models/recipie.dart';
 import '../../../app/interfaces/home/home_interface.dart';
 
@@ -28,5 +30,15 @@ class HomeService implements IHome {
       print('response body: ${response.body}');
       return null;
     }
+  }
+
+  @override
+  Future getUserData() async {
+    final _localStorage = await SharedPreferences.getInstance();
+    String name;
+    Future.delayed(Duration(milliseconds: 500), () {
+      name = _localStorage.getString('NAME');
+      return name;
+    });
   }
 }

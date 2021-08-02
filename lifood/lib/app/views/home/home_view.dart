@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:lifood/app/components/home/drawer/drawer_body.dart';
 import 'package:lifood/app/controllers/home/home_controller.dart';
 import '../../../app/views/auth/login_view.dart';
 import '../../../app/components/home/home_body.dart';
@@ -33,10 +34,12 @@ class _HomeViewState extends State<HomeView> {
               return Observer(builder: (context) {
                 return Stack(
                   children: <Widget>[
-                    SafeArea(
-                      child: Center(
-                        child: Text('Welcome to drawer '),
-                      ),
+                    DrawerBody(
+                      changeValue: () {
+                        setState(() {
+                          _homeController.changeValue();
+                        });
+                      },
                     ),
                     TweenAnimationBuilder(
                       tween: Tween<double>(
