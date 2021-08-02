@@ -42,4 +42,9 @@ class AppTextStyles {
     fontSize: 15,
     color: Colors.white,
   );
+  // home -> drawer
+  static final TextStyle homeDrawerItemTextStyle = GoogleFonts.poppins(
+    fontSize: 15,
+    color: Colors.white,
+  );
 }

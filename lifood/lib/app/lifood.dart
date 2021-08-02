@@ -17,7 +17,9 @@ class LiFood extends StatelessWidget {
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return CustomCircularProgressIndicator();
+            return Center(
+              child: CustomCircularProgressIndicator(),
+            );
           default:
             if (snapshot.data['name'] != null &&
                 snapshot.data['token'] != null) {

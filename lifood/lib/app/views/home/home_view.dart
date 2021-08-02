@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:lifood/app/components/home/drawer/drawer_body.dart';
 import 'package:lifood/app/controllers/home/home_controller.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../app/views/auth/login_view.dart';
 import '../../../app/components/home/home_body.dart';
 import '../../../app/services/auth/auth_service.dart';
@@ -27,7 +28,32 @@ class _HomeViewState extends State<HomeView> {
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return CustomCircularProgressIndicator();
+            return Shimmer.fromColors(
+                child: Container(
+                  width: MediaQuery.of(context).size.height,
+                  margin: const EdgeInsets.only(right: 10),
+                  height: 300,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 6,
+                    itemBuilder: (context, i) {
+                      return Card(
+                        color: Colors.transparent,
+                        child: Container(
+                          height: 200,
+                          width: 200,
+                          margin: const EdgeInsets.only(right: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.grey.shade300,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                baseColor: Colors.transparent,
+                highlightColor: Colors.grey);
           default:
             if (snapshot.data['name'] != null &&
                 snapshot.data['token'] != null) {
@@ -83,6 +109,15 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                         ));
+                      },
+                    ),
+                    GestureDetector(
+                      onHorizontalDragUpdate: (e) {
+                        if (e.delta.dx > 0) {
+                          _homeController.value = 1;
+                        } else {
+                          _homeController.value = 0;
+                        }
                       },
                     ),
                   ],

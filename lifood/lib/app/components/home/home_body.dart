@@ -60,10 +60,13 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
                 onPressed: () => widget.changeValue(),
               ),
-              CircleAvatar(
-                radius: 18,
-                backgroundImage: NetworkImage(
-                  AppImagesAssets.homePersonPath,
+              Container(
+                margin: const EdgeInsets.only(right: 10, top: 10),
+                child: CircleAvatar(
+                  radius: 18,
+                  backgroundImage: NetworkImage(
+                    AppImagesAssets.homePersonPath,
+                  ),
                 ),
               ),
             ],
