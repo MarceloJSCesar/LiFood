@@ -25,6 +25,7 @@ class RecipeDetail extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   image: DecorationImage(
+                    fit: BoxFit.cover,
                     image: NetworkImage(recipeImageUrl),
                   ),
                 ),
@@ -32,8 +33,9 @@ class RecipeDetail extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     IconButton(
+                      color: Colors.black,
                       icon: Icon(Icons.arrow_back),
-                      iconSize: 30,
+                      iconSize: 25,
                       onPressed: () => Navigator.of(context).pop(),
                     ),
                     Expanded(

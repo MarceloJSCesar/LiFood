@@ -55,7 +55,7 @@ class RecipeCard extends StatelessWidget {
                 height: 300,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: data.length,
+                  itemCount: details.length,
                   itemBuilder: (context, i) {
                     return GestureDetector(
                       onTap: () {
