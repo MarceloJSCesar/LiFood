@@ -4,10 +4,8 @@ import 'package:lifood/app/components/home/widgets/categories_button.dart';
 import 'package:lifood/app/components/home/widgets/recipe_card.dart';
 
 class HeaderBody extends StatelessWidget {
-  final dynamic data;
   const HeaderBody({
     Key key,
-    this.data,
   }) : super(key: key);
 
   @override
@@ -51,9 +49,7 @@ class HeaderBody extends StatelessWidget {
         BodyTitle(
           text: 'Categories',
         ),
-        RecipeCard(
-          data: data,
-        ),
+        RecipeCard(),
       ],
     );
   }

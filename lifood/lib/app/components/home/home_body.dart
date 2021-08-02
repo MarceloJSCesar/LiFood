@@ -8,6 +8,7 @@ import 'package:lifood/app/components/home/widgets/recipe_card.dart';
 import 'package:lifood/app/components/home/widgets/search_field.dart';
 import 'package:lifood/app/components/home/widgets/section_body.dart';
 import 'package:lifood/app/config/app_textstyles.dart';
+import 'package:lifood/app/controllers/home/home_controller.dart';
 import 'package:lifood/app/services/home/home_service.dart';
 
 import 'package:typicons_flutter/typicons_flutter.dart';
@@ -15,7 +16,11 @@ import '../../../app/config/app_image_assets.dart';
 import '../custom_circular_progress_indicator.dart';
 
 class HomeBody extends StatefulWidget {
-  const HomeBody({Key key}) : super(key: key);
+  final Function changeValue;
+  const HomeBody({
+    Key key,
+    this.changeValue,
+  }) : super(key: key);
 
   @override
   _HomeBodyState createState() => _HomeBodyState();
@@ -40,83 +45,62 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _homeService.getListRecipies(),
-      builder: (context, snapshot) {
-        switch (snapshot.connectionState) {
-          case ConnectionState.waiting:
-            return Center(
-              child: CustomCircularProgressIndicator(),
-            );
-          default:
-            final data = snapshot.data;
-            if (snapshot.data != null) {
-              print(data[1][1]['images'][0]['hostedLargeUrl']);
-              print(data[0][0]['originalVideoUrl']);
-              return SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        IconButton(
-                          icon: Icon(
-                            Typicons.th_menu,
-                            color: Colors.white,
-                            size: 25,
-                          ),
-                          onPressed: () => print('opening drawer ...'),
-                        ),
-                        CircleAvatar(
-                          radius: 18,
-                          backgroundImage: NetworkImage(
-                            AppImagesAssets.homePersonPath,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Container(
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 5,
-                      ),
-                      child: Text(
-                        date,
-                        style: AppTextStyles.homeDateTextStyle,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    SearchField(),
-                    SizedBox(height: 20),
-                    HeaderBody(data: data[1]),
-                    BodyTitle(
-                      text: 'Hot food trailer videos',
-                    ),
-                    Container(
-                      height: 300,
-                      width: MediaQuery.of(context).size.width,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: videoUrlist.length,
-                          itemBuilder: (context, i) {
-                            return SectionBody(
-                              videoUrl: videoUrlist[i],
-                            );
-                          }),
-                    ),
-                  ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              IconButton(
+                  icon: Icon(
+                    Typicons.th_menu,
+                    color: Colors.white,
+                    size: 25,
+                  ),
+                  onPressed: () => widget.changeValue()),
+              CircleAvatar(
+                radius: 18,
+                backgroundImage: NetworkImage(
+                  AppImagesAssets.homePersonPath,
                 ),
-              );
-            } else {
-              return Text(
-                'error with receiving data from api = ${snapshot.data}',
-                style: AppTextStyles.homeTitleTextStyle,
-              );
-            }
-        }
-      },
+              ),
+            ],
+          ),
+          SizedBox(height: 10),
+          Container(
+            margin: const EdgeInsets.symmetric(
+              horizontal: 10,
+              vertical: 5,
+            ),
+            child: Text(
+              date,
+              style: AppTextStyles.homeDateTextStyle,
+            ),
+          ),
+          SizedBox(height: 10),
+          SearchField(),
+          SizedBox(height: 20),
+          HeaderBody(),
+          BodyTitle(
+            text: 'Hot food trailer videos',
+          ),
+          /*
+          Container(
+            height: 300,
+            width: MediaQuery.of(context).size.width,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: videoUrlist.length,
+                itemBuilder: (context, i) {
+                  return SectionBody(
+                    videoUrl: videoUrlist[i],
+                  );
+                }),
+          ),
+          */
+        ],
+      ),
     );
   }
 }

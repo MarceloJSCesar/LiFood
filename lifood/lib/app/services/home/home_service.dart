@@ -10,29 +10,22 @@ class HomeService implements IHome {
     var api = Uri.https('yummly2.p.rapidapi.com', '/feeds/list',
         {"limit": "18", "start": "0", "tag": "list.recipe.popular"});
     final headers = {
-      "x-rapidapi-key": "92e1c8bcd1msh33dce8bdf8dfb9ep1de753jsn9689afea0e83",
+      "x-rapidapi-key": "fda317fffamsh832588d0e7c5056p1324c0jsn6d9453078003",
       "x-rapidapi-host": "yummly2.p.rapidapi.com",
       "useQueryString": "true"
     };
     final response = await http.get(api, headers: headers);
     if (response.statusCode == 200) {
       List details = [];
-      List videos = [];
       Map dataReived = json.decode(response.body);
-      for (var c = 0; c < dataReived['feed'].length; c++) {
-        for (dynamic i in dataReived['feed']) {
-          print(c);
-          details.add(i['content']['details']);
-          videos.add(i['content']['videos']);
-        }
+
+      for (dynamic i in dataReived['feed']) {
+        details.add(i['content']['details']);
       }
 
-      final data = [
-        videos,
-        details,
-      ];
-      return data;
+      return details;
     } else {
+      print('response body: ${response.body}');
       return null;
     }
   }

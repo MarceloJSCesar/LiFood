@@ -33,6 +33,7 @@ dependencies:
   mobx: ^2.0.3
   mobx_codegen: ^2.0.2
   shared_preferences: ^2.0.6
+  shimmer: ^2.0.0
   typicons_flutter: ^0.5.0
   video_player: ^2.1.12
 

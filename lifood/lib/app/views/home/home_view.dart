@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:lifood/app/controllers/home/home_controller.dart';
 import '../../../app/views/auth/login_view.dart';
 import '../../../app/components/home/home_body.dart';
 import '../../../app/services/auth/auth_service.dart';
@@ -15,6 +17,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final _authService = AuthService();
+  final _homeController = HomeController();
   double value = 0;
   @override
   Widget build(BuildContext context) {
@@ -27,9 +30,8 @@ class _HomeViewState extends State<HomeView> {
           default:
             if (snapshot.data['name'] != null &&
                 snapshot.data['token'] != null) {
-              return Scaffold(
-                backgroundColor: Colors.black,
-                body: Stack(
+              return Observer(builder: (context) {
+                return Stack(
                   children: <Widget>[
                     SafeArea(
                       child: Center(
@@ -39,7 +41,7 @@ class _HomeViewState extends State<HomeView> {
                     TweenAnimationBuilder(
                       tween: Tween<double>(
                         begin: 0,
-                        end: value,
+                        end: _homeController.value,
                       ),
                       duration: Duration(
                         milliseconds: 500,
@@ -53,39 +55,40 @@ class _HomeViewState extends State<HomeView> {
                             ..rotateY((pi / 6) * val),
                           child: Scaffold(
                             backgroundColor: Colors.black,
-                            appBar: AppBar(
-                              leading: IconButton(
-                                icon: Icon(Icons.menu),
-                                onPressed: () {
+                            body: SafeArea(
+                              child: HomeBody(
+                                changeValue: () {
                                   setState(() {
-                                    value == 0 ? value = 1 : value = 0;
+                                    _homeController.changeValue();
                                   });
                                 },
                               ),
                             ),
-                            body: HomeBody(),
+                            bottomNavigationBar: Container(
+                              color: Colors.transparent,
+                              margin: const EdgeInsets.only(bottom: 20),
+                              padding: const EdgeInsets.all(10),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: CupertinoTabBar(
+                                  items: <BottomNavigationBarItem>[
+                                    BottomNavigationBarItem(
+                                        icon: Icon(Icons.home)),
+                                    BottomNavigationBarItem(
+                                        icon: Icon(Icons.favorite)),
+                                    BottomNavigationBarItem(
+                                        icon: Icon(Icons.person)),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
                         ));
                       },
                     ),
                   ],
-                ),
-                bottomNavigationBar: Container(
-                  color: Colors.transparent,
-                  margin: const EdgeInsets.only(bottom: 20),
-                  padding: const EdgeInsets.all(10),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: CupertinoTabBar(
-                      items: <BottomNavigationBarItem>[
-                        BottomNavigationBarItem(icon: Icon(Icons.home)),
-                        BottomNavigationBarItem(icon: Icon(Icons.favorite)),
-                        BottomNavigationBarItem(icon: Icon(Icons.person)),
-                      ],
-                    ),
-                  ),
-                ),
-              );
+                );
+              });
             } else {
               return LoginView();
             }
