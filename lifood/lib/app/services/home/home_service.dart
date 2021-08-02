@@ -8,7 +8,7 @@ import '../../../app/interfaces/home/home_interface.dart';
 
 class HomeService implements IHome {
   @override
-  Future<List> getListRecipies() async {
+  Future getListRecipies() async {
     var api = Uri.https('yummly2.p.rapidapi.com', '/feeds/list',
         {"limit": "18", "start": "0", "tag": "list.recipe.popular"});
     final headers = {
@@ -19,13 +19,21 @@ class HomeService implements IHome {
     final response = await http.get(api, headers: headers);
     if (response.statusCode == 200) {
       List details = [];
+      List reviews = [];
+      List description = [];
       Map dataReived = json.decode(response.body);
 
       for (dynamic i in dataReived['feed']) {
         details.add(i['content']['details']);
+        reviews.add(i['content']['reviews']);
+        description.add(i['content']['description']);
       }
-
-      return details;
+      final body = [
+        details,
+        reviews,
+        description,
+      ];
+      return body;
     } else {
       print('response body: ${response.body}');
       return null;

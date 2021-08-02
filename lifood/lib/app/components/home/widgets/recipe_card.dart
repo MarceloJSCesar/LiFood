@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lifood/app/services/home/home_service.dart';
+import 'package:lifood/app/views/home/recipes/recipe_details.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../custom_circular_progress_indicator.dart';
@@ -44,6 +45,9 @@ class RecipeCard extends StatelessWidget {
                 highlightColor: Colors.grey);
           default:
             final data = snapshot.data;
+            final details = snapshot.data[0];
+            final reviews = snapshot.data[1];
+
             if (snapshot.data != null) {
               return Container(
                 width: MediaQuery.of(context).size.height,
@@ -55,7 +59,19 @@ class RecipeCard extends StatelessWidget {
                   itemBuilder: (context, i) {
                     return GestureDetector(
                       onTap: () {
-                        print(data[i]['name']);
+                        print(details[i]['name']);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => RecipeDetail(
+                              recipeName: details[i]['name'],
+                              recipeRating:
+                                  reviews[i]['averageRating'].toString(),
+                              recipeImageUrl: details[i]['images'][0]
+                                  ['hostedLargeUrl'],
+                              recipeTotalTime: details[i]['totalTime'],
+                            ),
+                          ),
+                        );
                       },
                       child: Card(
                         color: Colors.transparent,
@@ -68,7 +84,7 @@ class RecipeCard extends StatelessWidget {
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
-                                data[i]['images'][0]['hostedLargeUrl'],
+                                details[i]['images'][0]['hostedLargeUrl'],
                               ),
                             ),
                           ),

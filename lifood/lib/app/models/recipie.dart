@@ -1,18 +1,18 @@
-class Recipie {
+class Recipe {
   final int id;
   final String name;
   final String image;
   final String totalTime;
 
-  Recipie({
+  Recipe({
     this.id,
     this.name,
     this.image,
     this.totalTime,
   });
 
-  factory Recipie.fromJson(dynamic json) {
-    return Recipie(
+  factory Recipe.fromJson(dynamic json) {
+    return Recipe(
       id: json['id'],
       name: json['name'] as String,
       totalTime: json['totalTime'] as String,
@@ -20,8 +20,8 @@ class Recipie {
     );
   }
 
-  static List<Recipie> recipiesFromSnapshot(List snapshot) {
-    return snapshot.map((data) => Recipie.fromJson(data)).toList();
+  static List<Recipe> recipesFromSnapshot(List snapshot) {
+    return snapshot.map((data) => Recipe.fromJson(data)).toList();
   }
 
   @override

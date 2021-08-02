@@ -89,6 +89,7 @@ class _HomeBodyState extends State<HomeBody> {
           BodyTitle(
             text: 'Hot food trailer videos',
           ),
+          /*
           Container(
             height: 300,
             width: MediaQuery.of(context).size.width,
@@ -101,6 +102,7 @@ class _HomeBodyState extends State<HomeBody> {
                   );
                 }),
           ),
+          */
         ],
       ),
     );
