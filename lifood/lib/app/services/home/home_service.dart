@@ -16,12 +16,22 @@ class HomeService implements IHome {
     };
     final response = await http.get(api, headers: headers);
     if (response.statusCode == 200) {
-      List dataList = [];
+      List details = [];
+      List videos = [];
       Map dataReived = json.decode(response.body);
-      for (var i in dataReived['feed']) {
-        dataList.add(i['content']['details']);
+      for (var c = 0; c < dataReived['feed'].length; c++) {
+        for (dynamic i in dataReived['feed']) {
+          print(c);
+          details.add(i['content']['details']);
+          videos.add(i['content']['videos']);
+        }
       }
-      return dataList;
+
+      final data = [
+        videos,
+        details,
+      ];
+      return data;
     } else {
       return null;
     }

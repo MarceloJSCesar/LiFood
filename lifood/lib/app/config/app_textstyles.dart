@@ -38,4 +38,8 @@ class AppTextStyles {
     fontSize: 22,
     color: Colors.white,
   );
+  static final TextStyle homeCategorieButtonTextStyle = GoogleFonts.poppins(
+    fontSize: 15,
+    color: Colors.white,
+  );
 }

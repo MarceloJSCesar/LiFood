@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../app/views/auth/login_view.dart';
 import '../../../app/components/home/home_body.dart';
@@ -28,6 +29,20 @@ class _HomeViewState extends State<HomeView> {
                 backgroundColor: Colors.black,
                 body: SafeArea(
                   child: HomeBody(),
+                ),
+                bottomNavigationBar: Container(
+                  margin: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.all(10),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: CupertinoTabBar(
+                      items: [
+                        BottomNavigationBarItem(icon: Icon(Icons.home)),
+                        BottomNavigationBarItem(icon: Icon(Icons.favorite)),
+                        BottomNavigationBarItem(icon: Icon(Icons.person)),
+                      ],
+                    ),
+                  ),
                 ),
               );
             } else {
