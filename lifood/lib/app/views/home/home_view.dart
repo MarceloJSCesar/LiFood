@@ -36,9 +36,7 @@ class _HomeViewState extends State<HomeView> {
                   children: <Widget>[
                     DrawerBody(
                       changeValue: () {
-                        setState(() {
-                          _homeController.changeValue();
-                        });
+                        _homeController.changeValue();
                       },
                     ),
                     TweenAnimationBuilder(
@@ -61,9 +59,7 @@ class _HomeViewState extends State<HomeView> {
                             body: SafeArea(
                               child: HomeBody(
                                 changeValue: () {
-                                  setState(() {
-                                    _homeController.changeValue();
-                                  });
+                                  _homeController.changeValue();
                                 },
                               ),
                             ),

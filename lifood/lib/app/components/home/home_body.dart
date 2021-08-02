@@ -53,12 +53,13 @@ class _HomeBodyState extends State<HomeBody> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               IconButton(
-                  icon: Icon(
-                    Typicons.th_menu,
-                    color: Colors.white,
-                    size: 25,
-                  ),
-                  onPressed: () => widget.changeValue()),
+                icon: Icon(
+                  Typicons.th_menu,
+                  color: Colors.white,
+                  size: 25,
+                ),
+                onPressed: () => widget.changeValue(),
+              ),
               CircleAvatar(
                 radius: 18,
                 backgroundImage: NetworkImage(
