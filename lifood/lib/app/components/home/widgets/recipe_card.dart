@@ -53,18 +53,23 @@ class RecipeCard extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: data.length,
                   itemBuilder: (context, i) {
-                    return Card(
-                      color: Colors.transparent,
-                      child: Container(
-                        height: 200,
-                        width: 200,
-                        margin: const EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                              data[i]['images'][0]['hostedLargeUrl'],
+                    return GestureDetector(
+                      onTap: () {
+                        print(data[i]['name']);
+                      },
+                      child: Card(
+                        color: Colors.transparent,
+                        child: Container(
+                          height: 200,
+                          width: 200,
+                          margin: const EdgeInsets.only(right: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                data[i]['images'][0]['hostedLargeUrl'],
+                              ),
                             ),
                           ),
                         ),

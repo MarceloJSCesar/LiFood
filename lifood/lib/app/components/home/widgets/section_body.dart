@@ -41,7 +41,7 @@ class _SectionBodyState extends State<SectionBody> {
   Widget build(BuildContext context) {
     return _controller != null && _controller.value.isInitialized
         ? Container(
-            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 3.5, vertical: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(22),
             ),

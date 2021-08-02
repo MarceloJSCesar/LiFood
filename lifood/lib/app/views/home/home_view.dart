@@ -111,6 +111,7 @@ class _HomeViewState extends State<HomeView> {
                         ));
                       },
                     ),
+                    /*
                     GestureDetector(
                       onHorizontalDragUpdate: (e) {
                         if (e.delta.dx > 0) {
@@ -120,6 +121,7 @@ class _HomeViewState extends State<HomeView> {
                         }
                       },
                     ),
+                    */
                   ],
                 );
               });

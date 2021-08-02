@@ -19,9 +19,12 @@ class HeaderBody extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: <Widget>[
-              CategoriesButton(
-                categorieTitle: 'All',
-                isButtonSelected: true,
+              Container(
+                margin: const EdgeInsets.only(left: 8),
+                child: CategoriesButton(
+                  categorieTitle: 'All',
+                  isButtonSelected: true,
+                ),
               ),
               SizedBox(width: 8),
               CategoriesButton(
