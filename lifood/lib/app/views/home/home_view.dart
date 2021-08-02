@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../app/views/auth/login_view.dart';
@@ -14,6 +15,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final _authService = AuthService();
+  double value = 0;
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -27,16 +29,55 @@ class _HomeViewState extends State<HomeView> {
                 snapshot.data['token'] != null) {
               return Scaffold(
                 backgroundColor: Colors.black,
-                body: SafeArea(
-                  child: HomeBody(),
+                body: Stack(
+                  children: <Widget>[
+                    SafeArea(
+                      child: Center(
+                        child: Text('Welcome to drawer '),
+                      ),
+                    ),
+                    TweenAnimationBuilder(
+                      tween: Tween<double>(
+                        begin: 0,
+                        end: value,
+                      ),
+                      duration: Duration(
+                        milliseconds: 500,
+                      ),
+                      builder: (context, val, child) {
+                        return (Transform(
+                          alignment: Alignment.center,
+                          transform: Matrix4.identity()
+                            ..setEntry(3, 2, 0.001)
+                            ..setEntry(0, 3, 200 * val)
+                            ..rotateY((pi / 6) * val),
+                          child: Scaffold(
+                            backgroundColor: Colors.black,
+                            appBar: AppBar(
+                              leading: IconButton(
+                                icon: Icon(Icons.menu),
+                                onPressed: () {
+                                  setState(() {
+                                    value == 0 ? value = 1 : value = 0;
+                                  });
+                                },
+                              ),
+                            ),
+                            body: HomeBody(),
+                          ),
+                        ));
+                      },
+                    ),
+                  ],
                 ),
                 bottomNavigationBar: Container(
+                  color: Colors.transparent,
                   margin: const EdgeInsets.only(bottom: 20),
                   padding: const EdgeInsets.all(10),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: CupertinoTabBar(
-                      items: [
+                      items: <BottomNavigationBarItem>[
                         BottomNavigationBarItem(icon: Icon(Icons.home)),
                         BottomNavigationBarItem(icon: Icon(Icons.favorite)),
                         BottomNavigationBarItem(icon: Icon(Icons.person)),
