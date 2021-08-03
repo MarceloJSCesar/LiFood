@@ -47,4 +47,9 @@ class AppTextStyles {
     fontSize: 15,
     color: Colors.white,
   );
+  // home -> detail
+  static final TextStyle homeDetailDescriptionTextStyle = GoogleFonts.adventPro(
+    fontSize: 15,
+    color: Colors.grey[300],
+  );
 }

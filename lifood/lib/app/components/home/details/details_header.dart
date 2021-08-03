@@ -3,9 +3,9 @@ import 'package:typicons_flutter/typicons_flutter.dart';
 
 class DetailsHeader extends StatelessWidget {
   final recipeName;
-  final double recipeRating;
   final recipeImageUrl;
   final recipeTotalTime;
+  final double recipeRating;
   const DetailsHeader({
     Key key,
     @required this.recipeName,
@@ -34,11 +34,22 @@ class DetailsHeader extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              IconButton(
-                color: Colors.black,
-                icon: Icon(Icons.arrow_back),
-                iconSize: 25,
-                onPressed: () => Navigator.of(context).pop(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  IconButton(
+                    color: Colors.black,
+                    icon: Icon(Icons.arrow_back),
+                    iconSize: 25,
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                  IconButton(
+                    color: Colors.red,
+                    icon: Icon(Icons.favorite),
+                    iconSize: 25,
+                    onPressed: () => print('putting in favorite food'),
+                  ),
+                ],
               ),
               Expanded(
                 child: Container(),

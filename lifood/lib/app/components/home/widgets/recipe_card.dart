@@ -47,6 +47,9 @@ class RecipeCard extends StatelessWidget {
             final data = snapshot.data;
             final details = snapshot.data[0];
             final reviews = snapshot.data[1];
+            final description = snapshot.data[2];
+            var ingredients = snapshot.data[3];
+            var ingredientsToDetailsView;
 
             if (snapshot.data != null) {
               return Container(
@@ -57,6 +60,10 @@ class RecipeCard extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: details.length,
                   itemBuilder: (context, i) {
+                    print('ing: ${ingredients.length}');
+                    for (int index = 0; index < ingredients.length; index++) {
+                      ingredientsToDetailsView = ingredients[index];
+                    }
                     return GestureDetector(
                       onTap: () {
                         print(details[i]['name']);
@@ -64,10 +71,12 @@ class RecipeCard extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (_) => RecipeDetail(
                               recipeName: details[i]['name'],
+                              description: description[i]['text'],
+                              recipeTotalTime: details[i]['totalTime'],
                               recipeRating: reviews[i]['averageRating'],
                               recipeImageUrl: details[i]['images'][0]
                                   ['hostedLargeUrl'],
-                              recipeTotalTime: details[i]['totalTime'],
+                              ingredients: ingredientsToDetailsView,
                             ),
                           ),
                         );

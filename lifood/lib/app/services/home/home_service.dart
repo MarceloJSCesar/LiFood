@@ -21,17 +21,20 @@ class HomeService implements IHome {
       List details = [];
       List reviews = [];
       List description = [];
+      List ingredients = [];
       Map dataReived = json.decode(response.body);
 
       for (dynamic i in dataReived['feed']) {
         details.add(i['content']['details']);
         reviews.add(i['content']['reviews']);
+        ingredients.add(i['content']['ingredientLines']);
         description.add(i['content']['description']);
       }
       final body = [
         details,
         reviews,
         description,
+        ingredients,
       ];
       return body;
     } else {

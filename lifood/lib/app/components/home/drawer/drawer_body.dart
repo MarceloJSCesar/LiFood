@@ -77,7 +77,8 @@ class _DrawerBodyState extends State<DrawerBody> {
                               GestureDetector(
                                 child: Icon(
                                   Icons.arrow_back,
-                                  size: 30,
+                                  size: 28,
+                                  color: Colors.white,
                                 ),
                                 onTap: () => widget.changeValue(),
                               ),
