@@ -49,6 +49,7 @@ class RecipeCard extends StatelessWidget {
             var ingredients = snapshot.data[3];
             var ingredientsToDetailsView;
             final preparationSteps = snapshot.data[4];
+            var preparationStepsToDetailsView;
 
             if (snapshot.data != null) {
               return Container(
@@ -63,6 +64,7 @@ class RecipeCard extends StatelessWidget {
                     for (int index = 0; index < ingredients.length; index++) {
                       ingredientsToDetailsView = ingredients[index];
                     }
+
                     return GestureDetector(
                       onTap: () {
                         print(details[i]['name']);
@@ -76,7 +78,7 @@ class RecipeCard extends StatelessWidget {
                               recipeImageUrl: details[i]['images'][0]
                                   ['hostedLargeUrl'],
                               ingredients: ingredientsToDetailsView,
-                              preparationSteps: preparationSteps,
+                              preparationSteps: preparationSteps[i],
                             ),
                           ),
                         );

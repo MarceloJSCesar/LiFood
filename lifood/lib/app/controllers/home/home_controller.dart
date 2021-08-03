@@ -16,26 +16,18 @@ abstract class HomeControllerBase with Store {
   @observable
   double detailsStepsValue = 0.0;
 
-  @action
-  void increaseDetailsStepsValue() {
-    detailsStepsValue += 0.1;
-  }
-
-  @action
-  void decreaseDetailsStepsValue() {
-    detailsStepsValue -= 0.1;
-  }
-
   @observable
   int detailsStepsIndex = 0;
 
   @action
-  void increaseDetailsStepsIndex() {
+  void increaseDetailsStepsIndexAndValue() {
     detailsStepsIndex += 1;
+    detailsStepsValue += 0.1;
   }
 
   @action
-  void decreaseDetailsStepsIndex() {
+  void decreaseDetailsStepsIndexAndValue() {
     detailsStepsIndex -= 1;
+    detailsStepsValue -= 0.1;
   }
 }

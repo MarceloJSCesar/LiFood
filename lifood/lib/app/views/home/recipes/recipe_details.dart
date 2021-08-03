@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:lifood/app/components/home/details/details_header.dart';
 import 'package:lifood/app/config/app_textstyles.dart';
+import 'package:lifood/app/controllers/home/home_controller.dart';
+import 'package:lifood/app/views/home/recipes/recipe_done_view.dart';
 import 'package:lifood/app/views/home/recipes/recipe_steps.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -26,6 +29,8 @@ class RecipeDetail extends StatefulWidget {
   @override
   _RecipeDetailState createState() => _RecipeDetailState();
 }
+
+var _homeController = HomeController();
 
 class _RecipeDetailState extends State<RecipeDetail> {
   List ingredientList = [];
@@ -109,13 +114,13 @@ class _RecipeDetailState extends State<RecipeDetail> {
           style: AppTextStyles.homeDetailIngredientsButtonTextStyle,
         ),
         backgroundColor: Colors.lightBlue,
-        onPressed: () => Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => RecipeSteps(
-              preparationSteps: widget.preparationSteps,
-            ),
-          ),
-        ),
+        onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => _homeController.detailsStepsIndex <
+                    widget.preparationSteps.length
+                ? RecipeSteps(
+                    preparationSteps: widget.preparationSteps,
+                  )
+                : RecipeDoneView())),
       ),
     );
   }

@@ -71,44 +71,22 @@ mixin _$HomeController on HomeControllerBase, Store {
   }
 
   @override
-  void increaseDetailsStepsValue() {
+  void increaseDetailsStepsIndexAndValue() {
     final _$actionInfo = _$HomeControllerBaseActionController.startAction(
-        name: 'HomeControllerBase.increaseDetailsStepsValue');
+        name: 'HomeControllerBase.increaseDetailsStepsIndexAndValue');
     try {
-      return super.increaseDetailsStepsValue();
+      return super.increaseDetailsStepsIndexAndValue();
     } finally {
       _$HomeControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void decreaseDetailsStepsValue() {
+  void decreaseDetailsStepsIndexAndValue() {
     final _$actionInfo = _$HomeControllerBaseActionController.startAction(
-        name: 'HomeControllerBase.decreaseDetailsStepsValue');
+        name: 'HomeControllerBase.decreaseDetailsStepsIndexAndValue');
     try {
-      return super.decreaseDetailsStepsValue();
-    } finally {
-      _$HomeControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void increaseDetailsStepsIndex() {
-    final _$actionInfo = _$HomeControllerBaseActionController.startAction(
-        name: 'HomeControllerBase.increaseDetailsStepsIndex');
-    try {
-      return super.increaseDetailsStepsIndex();
-    } finally {
-      _$HomeControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void decreaseDetailsStepsIndex() {
-    final _$actionInfo = _$HomeControllerBaseActionController.startAction(
-        name: 'HomeControllerBase.decreaseDetailsStepsIndex');
-    try {
-      return super.decreaseDetailsStepsIndex();
+      return super.decreaseDetailsStepsIndexAndValue();
     } finally {
       _$HomeControllerBaseActionController.endAction(_$actionInfo);
     }

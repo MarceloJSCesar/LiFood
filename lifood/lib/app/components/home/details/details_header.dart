@@ -58,7 +58,7 @@ class DetailsHeader extends StatelessWidget {
               Container(
                 height: 55,
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.3),
+                  color: Colors.black.withOpacity(0.4),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(22),
                     bottomRight: Radius.circular(22),

@@ -62,4 +62,12 @@ class AppTextStyles {
     fontSize: 18,
     color: Colors.white,
   );
+  static final TextStyle homeDetailStepsTitleTextStyle = GoogleFonts.adventPro(
+    fontSize: 22,
+    color: Colors.black,
+  );
+  static final TextStyle homeDetailStepsTextStyle = GoogleFonts.poppins(
+    fontSize: 16,
+    color: Colors.black,
+  );
 }
