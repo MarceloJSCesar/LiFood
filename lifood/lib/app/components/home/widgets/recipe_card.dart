@@ -64,8 +64,7 @@ class RecipeCard extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (_) => RecipeDetail(
                               recipeName: details[i]['name'],
-                              recipeRating:
-                                  reviews[i]['averageRating'].toString(),
+                              recipeRating: reviews[i]['averageRating'],
                               recipeImageUrl: details[i]['images'][0]
                                   ['hostedLargeUrl'],
                               recipeTotalTime: details[i]['totalTime'],

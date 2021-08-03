@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:typicons_flutter/typicons_flutter.dart';
 
 class RecipeDetail extends StatelessWidget {
   final recipeName;
-  final recipeRating;
+  final double recipeRating;
   final recipeImageUrl;
   final recipeTotalTime;
   const RecipeDetail({
@@ -21,12 +22,16 @@ class RecipeDetail extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Container(
-                height: 192,
+                height: 200,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(recipeImageUrl),
+                  ),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(22),
+                    bottomRight: Radius.circular(22),
                   ),
                 ),
                 child: Column(
@@ -41,13 +46,46 @@ class RecipeDetail extends StatelessWidget {
                     Expanded(
                       child: Container(),
                     ),
-                    Text(recipeName),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(recipeTotalTime),
-                        Text(recipeRating),
-                      ],
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.3),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(22),
+                          bottomRight: Radius.circular(22),
+                        ),
+                      ),
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 6),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(recipeName),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(recipeTotalTime),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Typicons.star,
+                                      color: Colors.white,
+                                      size: 20,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text(recipeRating.toStringAsFixed(1)),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),

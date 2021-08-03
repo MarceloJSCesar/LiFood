@@ -2,7 +2,7 @@ class Recipe {
   final int id;
   final String name;
   final String image;
-  final String totalTime;
+  final double totalTime;
 
   Recipe({
     this.id,
@@ -15,7 +15,7 @@ class Recipe {
     return Recipe(
       id: json['id'],
       name: json['name'] as String,
-      totalTime: json['totalTime'] as String,
+      totalTime: json['totalTime'],
       image: json['images'][0]['hostedLargeUrl'] as String,
     );
   }
