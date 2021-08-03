@@ -62,13 +62,13 @@ class _HomeViewState extends State<HomeView> {
                   children: <Widget>[
                     DrawerBody(
                       changeValue: () {
-                        _homeController.changeValue();
+                        _homeController.changeDrawerValue();
                       },
                     ),
                     TweenAnimationBuilder(
                       tween: Tween<double>(
                         begin: 0,
-                        end: _homeController.value,
+                        end: _homeController.drawerValue,
                       ),
                       duration: Duration(
                         milliseconds: 500,
@@ -85,7 +85,7 @@ class _HomeViewState extends State<HomeView> {
                             body: SafeArea(
                               child: HomeBody(
                                 changeValue: () {
-                                  _homeController.changeValue();
+                                  _homeController.changeDrawerValue();
                                 },
                               ),
                             ),

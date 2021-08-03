@@ -3,8 +3,6 @@ import 'package:lifood/app/services/home/home_service.dart';
 import 'package:lifood/app/views/home/recipes/recipe_details.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../custom_circular_progress_indicator.dart';
-
 class RecipeCard extends StatelessWidget {
   const RecipeCard({
     Key key,
@@ -50,6 +48,7 @@ class RecipeCard extends StatelessWidget {
             final description = snapshot.data[2];
             var ingredients = snapshot.data[3];
             var ingredientsToDetailsView;
+            final preparationSteps = snapshot.data[4];
 
             if (snapshot.data != null) {
               return Container(
@@ -77,6 +76,7 @@ class RecipeCard extends StatelessWidget {
                               recipeImageUrl: details[i]['images'][0]
                                   ['hostedLargeUrl'],
                               ingredients: ingredientsToDetailsView,
+                              preparationSteps: preparationSteps,
                             ),
                           ),
                         );

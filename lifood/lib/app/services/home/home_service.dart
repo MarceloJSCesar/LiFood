@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../app/models/recipie.dart';
 import '../../../app/interfaces/home/home_interface.dart';
 
 class HomeService implements IHome {
@@ -22,19 +21,22 @@ class HomeService implements IHome {
       List reviews = [];
       List description = [];
       List ingredients = [];
+      List preparationSteps = [];
       Map dataReived = json.decode(response.body);
 
       for (dynamic i in dataReived['feed']) {
         details.add(i['content']['details']);
         reviews.add(i['content']['reviews']);
-        ingredients.add(i['content']['ingredientLines']);
         description.add(i['content']['description']);
+        ingredients.add(i['content']['ingredientLines']);
+        preparationSteps.add(i['content']['preparationSteps']);
       }
       final body = [
         details,
         reviews,
         description,
         ingredients,
+        preparationSteps,
       ];
       return body;
     } else {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifood/app/config/app_textstyles.dart';
 import 'package:typicons_flutter/typicons_flutter.dart';
 
 class DetailsHeader extends StatelessWidget {
@@ -55,7 +56,7 @@ class DetailsHeader extends StatelessWidget {
                 child: Container(),
               ),
               Container(
-                height: 50,
+                height: 55,
                 decoration: BoxDecoration(
                   color: Colors.black.withOpacity(0.3),
                   borderRadius: BorderRadius.only(
@@ -72,11 +73,15 @@ class DetailsHeader extends StatelessWidget {
                       Text(
                         recipeName,
                         overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.homeDetailDescriptionTextStyle,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(recipeTotalTime),
+                          Text(
+                            recipeTotalTime,
+                            style: AppTextStyles.homeDetailDescriptionTextStyle,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -89,7 +94,11 @@ class DetailsHeader extends StatelessWidget {
                               SizedBox(
                                 width: 3,
                               ),
-                              Text(recipeRating.toStringAsFixed(1)),
+                              Text(
+                                recipeRating.toStringAsFixed(1),
+                                style: AppTextStyles
+                                    .homeDetailDescriptionTextStyle,
+                              ),
                             ],
                           ),
                         ],

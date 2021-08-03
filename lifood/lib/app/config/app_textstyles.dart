@@ -52,4 +52,14 @@ class AppTextStyles {
     fontSize: 15,
     color: Colors.grey[300],
   );
+  static final TextStyle homeDetailIngredientsTitleTextStyle =
+      GoogleFonts.adventPro(
+    fontSize: 25,
+    color: Colors.grey[300],
+  );
+  static final TextStyle homeDetailIngredientsButtonTextStyle =
+      GoogleFonts.adventPro(
+    fontSize: 18,
+    color: Colors.white,
+  );
 }

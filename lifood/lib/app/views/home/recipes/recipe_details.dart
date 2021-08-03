@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lifood/app/components/home/details/details_header.dart';
+import 'package:lifood/app/config/app_textstyles.dart';
+import 'package:lifood/app/views/home/recipes/recipe_steps.dart';
 import 'package:shimmer/shimmer.dart';
 
 class RecipeDetail extends StatefulWidget {
@@ -8,6 +10,7 @@ class RecipeDetail extends StatefulWidget {
   final description;
   final recipeImageUrl;
   final recipeTotalTime;
+  final preparationSteps;
   final double recipeRating;
   RecipeDetail({
     Key key,
@@ -17,6 +20,7 @@ class RecipeDetail extends StatefulWidget {
     @required this.recipeRating,
     @required this.recipeImageUrl,
     @required this.recipeTotalTime,
+    @required this.preparationSteps,
   }) : super(key: key);
 
   @override
@@ -56,25 +60,62 @@ class _RecipeDetailState extends State<RecipeDetail> {
             ),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Text(widget.description),
+              child: Text(
+                widget.description,
+                style: AppTextStyles.homeDetailDescriptionTextStyle,
+              ),
             ),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  child: Text(
+                    'Ingredients',
+                    style: AppTextStyles.homeDetailIngredientsTitleTextStyle,
+                  ),
+                ),
                 ...ingredientList
-                    .map((ingredient) => Row(
+                    .map(
+                      (ingredient) => Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 0),
+                        child: Row(
                           children: <Widget>[
                             Icon(
                               Icons.keyboard_arrow_right,
                               color: Colors.white,
                             ),
-                            Text(ingredient.toString()),
+                            Text(
+                              ingredient,
+                              style:
+                                  AppTextStyles.homeDetailDescriptionTextStyle,
+                            ),
                           ],
-                        ))
+                        ),
+                      ),
+                    )
                     .toList(),
               ],
             )
           ],
         )),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text(
+          'Start',
+          style: AppTextStyles.homeDetailIngredientsButtonTextStyle,
+        ),
+        backgroundColor: Colors.lightBlue,
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => RecipeSteps(
+              preparationSteps: widget.preparationSteps,
+            ),
+          ),
+        ),
       ),
     );
   }
