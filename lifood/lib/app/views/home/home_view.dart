@@ -89,24 +89,6 @@ class _HomeViewState extends State<HomeView> {
                                 },
                               ),
                             ),
-                            bottomNavigationBar: Container(
-                              color: Colors.transparent,
-                              margin: const EdgeInsets.only(bottom: 20),
-                              padding: const EdgeInsets.all(10),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: CupertinoTabBar(
-                                  items: <BottomNavigationBarItem>[
-                                    BottomNavigationBarItem(
-                                        icon: Icon(Icons.home)),
-                                    BottomNavigationBarItem(
-                                        icon: Icon(Icons.favorite)),
-                                    BottomNavigationBarItem(
-                                        icon: Icon(Icons.person)),
-                                  ],
-                                ),
-                              ),
-                            ),
                           ),
                         ));
                       },

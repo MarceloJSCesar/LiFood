@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifood/app/views/app_view.dart';
 import '../app/views/home/home_view.dart';
 import '../app/views/auth/login_view.dart';
 import '../app/config/app_routes_name.dart';
@@ -26,7 +27,7 @@ class LiFood extends StatelessWidget {
               print(snapshot.data);
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: HomeView(),
+                home: AppView(),
                 theme: ThemeData(
                   brightness: Brightness.dark,
                 ),
@@ -36,9 +37,10 @@ class LiFood extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 initialRoute: AppRoutesNames.toInitialRoute,
                 routes: {
-                  AppRoutesNames.toInitialRoute: (_) => SplashView(),
+                  AppRoutesNames.toAppView: (_) => AppView(),
                   AppRoutesNames.toHomeView: (_) => HomeView(),
                   AppRoutesNames.toLoginView: (_) => LoginView(),
+                  AppRoutesNames.toInitialRoute: (_) => SplashView(),
                   AppRoutesNames.toRegisterView: (_) => RegisterView(),
                 },
               );

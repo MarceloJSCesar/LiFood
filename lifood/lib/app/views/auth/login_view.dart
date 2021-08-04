@@ -123,7 +123,7 @@ class _LoginViewState extends State<LoginView> {
                                     print(user);
                                     _authController.disableIsLoading();
                                     Navigator.of(context).pushReplacementNamed(
-                                      AppRoutesNames.toHomeView,
+                                      AppRoutesNames.toAppView,
                                     );
                                   },
                                 ),

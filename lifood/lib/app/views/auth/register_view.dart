@@ -134,7 +134,7 @@ class _RegisterViewState extends State<RegisterView> {
                                     print(user);
                                     _authController.disableIsLoading();
                                     Navigator.of(context).pushReplacementNamed(
-                                      AppRoutesNames.toHomeView,
+                                      AppRoutesNames.toAppView,
                                     );
                                   },
                                   text: 'Sign Up',
