@@ -70,4 +70,13 @@ class AppTextStyles {
     fontSize: 16,
     color: Colors.black,
   );
+  // profile view
+  static final TextStyle profileNameTextStyle = GoogleFonts.adventPro(
+    fontSize: 18.5,
+    color: Colors.white,
+  );
+  static final TextStyle profileTitleTextStyle = GoogleFonts.adventPro(
+    fontSize: 25,
+    color: Colors.white,
+  );
 }

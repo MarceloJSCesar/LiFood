@@ -2,12 +2,14 @@ class Recipe {
   final int id;
   final String name;
   final String image;
+  final String rating;
   final double totalTime;
 
   Recipe({
     this.id,
     this.name,
     this.image,
+    this.rating,
     this.totalTime,
   });
 
