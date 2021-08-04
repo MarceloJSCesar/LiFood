@@ -73,17 +73,17 @@ class FavoriteView extends StatelessWidget {
                         leading: Container(
                           margin: const EdgeInsets.symmetric(
                             horizontal: 10,
-                            vertical: 40,
+                            vertical: 20,
                           ),
-                          height: 60,
-                          width: 60,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(18),
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: NetworkImage(
-                                snapshot.data['imageUrl'],
-                              ),
+                          ),
+                          child: Image(
+                            height: 50,
+                            width: 50,
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                              snapshot.data['imageUrl'],
                             ),
                           ),
                         ),
