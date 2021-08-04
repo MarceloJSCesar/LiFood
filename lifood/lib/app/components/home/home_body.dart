@@ -85,11 +85,10 @@ class _HomeBodyState extends State<HomeBody> {
           SizedBox(height: 10),
           SearchField(),
           SizedBox(height: 20),
-          //HeaderBody(),
+          HeaderBody(),
           BodyTitle(
             text: 'Hot food trailer videos',
           ),
-          /*
           Container(
             height: 300,
             width: MediaQuery.of(context).size.width,
@@ -102,7 +101,6 @@ class _HomeBodyState extends State<HomeBody> {
                   );
                 }),
           ),
-          */
         ],
       ),
     );

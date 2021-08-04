@@ -66,120 +66,129 @@ class _ProfileViewState extends State<ProfileView> {
               return Scaffold(
                 backgroundColor: Colors.black,
                 body: SafeArea(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 20,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        ProfileHeader(userName: userName),
-                        SizedBox(height: 20),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Food Made',
-                              style: AppTextStyles.profileTitleTextStyle,
-                            ),
-                            SizedBox(height: 20),
-                            Container(
-                              width: MediaQuery.of(context).size.height,
-                              margin: const EdgeInsets.only(right: 10),
-                              height: 350,
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: 3,
-                                itemBuilder: (context, index) {
-                                  return Card(
-                                    color: Colors.transparent,
-                                    child: Container(
-                                      height: 350,
-                                      width: 350,
-                                      margin: const EdgeInsets.only(right: 10),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(16),
-                                        image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: NetworkImage(
-                                            details[index]['images'][0]
-                                                ['hostedLargeUrl'],
-                                          ),
-                                        ),
-                                      ),
+                  child: SingleChildScrollView(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 20,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          ProfileHeader(userName: userName),
+                          SizedBox(height: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Food Made',
+                                style: AppTextStyles.profileTitleTextStyle,
+                              ),
+                              SizedBox(height: 20),
+                              Container(
+                                width: MediaQuery.of(context).size.height,
+                                margin: const EdgeInsets.only(right: 10),
+                                height: 350,
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: 3,
+                                  itemBuilder: (context, index) {
+                                    return Card(
+                                      color: Colors.transparent,
                                       child: Container(
-                                        height: 55,
+                                        height: 350,
+                                        width: 350,
+                                        margin:
+                                            const EdgeInsets.only(right: 10),
                                         decoration: BoxDecoration(
-                                          color: Colors.black.withOpacity(0.4),
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(16),
-                                            bottomRight: Radius.circular(16),
+                                          borderRadius:
+                                              BorderRadius.circular(16),
+                                          image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: NetworkImage(
+                                              details[index]['images'][0]
+                                                  ['hostedLargeUrl'],
+                                            ),
                                           ),
                                         ),
                                         child: Container(
-                                          margin: const EdgeInsets.symmetric(
-                                              horizontal: 15, vertical: 6),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: <Widget>[
-                                              Text(
-                                                details[index]['name'],
-                                                overflow: TextOverflow.ellipsis,
-                                                style: AppTextStyles
-                                                    .homeDetailDescriptionTextStyle,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: <Widget>[
-                                                  Text(
-                                                    details[index]['totalTime'],
-                                                    style: AppTextStyles
-                                                        .homeDetailDescriptionTextStyle,
-                                                  ),
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: <Widget>[
-                                                      Icon(
-                                                        Typicons.star,
-                                                        color: Colors.white,
-                                                        size: 20,
-                                                      ),
-                                                      SizedBox(
-                                                        width: 3,
-                                                      ),
-                                                      Text(
-                                                        reviews[index][
-                                                                'averageRating']
-                                                            .toStringAsFixed(1),
-                                                        style: AppTextStyles
-                                                            .homeDetailDescriptionTextStyle,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
+                                          height: 55,
+                                          decoration: BoxDecoration(
+                                            color:
+                                                Colors.black.withOpacity(0.4),
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(16),
+                                              bottomRight: Radius.circular(16),
+                                            ),
+                                          ),
+                                          child: Container(
+                                            margin: const EdgeInsets.symmetric(
+                                                horizontal: 15, vertical: 6),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: <Widget>[
+                                                Text(
+                                                  details[index]['name'],
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: AppTextStyles
+                                                      .homeDetailDescriptionTextStyle,
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: <Widget>[
+                                                    Text(
+                                                      details[index]
+                                                          ['totalTime'],
+                                                      style: AppTextStyles
+                                                          .homeDetailDescriptionTextStyle,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: <Widget>[
+                                                        Icon(
+                                                          Typicons.star,
+                                                          color: Colors.white,
+                                                          size: 20,
+                                                        ),
+                                                        SizedBox(
+                                                          width: 3,
+                                                        ),
+                                                        Text(
+                                                          reviews[index][
+                                                                  'averageRating']
+                                                              .toStringAsFixed(
+                                                                  1),
+                                                          style: AppTextStyles
+                                                              .homeDetailDescriptionTextStyle,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  );
-                                },
+                                    );
+                                  },
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

@@ -56,6 +56,22 @@ mixin _$HomeController on HomeControllerBase, Store {
     });
   }
 
+  final _$isRecipeFavorireAtom =
+      Atom(name: 'HomeControllerBase.isRecipeFavorire');
+
+  @override
+  bool get isRecipeFavorire {
+    _$isRecipeFavorireAtom.reportRead();
+    return super.isRecipeFavorire;
+  }
+
+  @override
+  set isRecipeFavorire(bool value) {
+    _$isRecipeFavorireAtom.reportWrite(value, super.isRecipeFavorire, () {
+      super.isRecipeFavorire = value;
+    });
+  }
+
   final _$HomeControllerBaseActionController =
       ActionController(name: 'HomeControllerBase');
 
@@ -93,11 +109,34 @@ mixin _$HomeController on HomeControllerBase, Store {
   }
 
   @override
+  void setRecipeToFavorite() {
+    final _$actionInfo = _$HomeControllerBaseActionController.startAction(
+        name: 'HomeControllerBase.setRecipeToFavorite');
+    try {
+      return super.setRecipeToFavorite();
+    } finally {
+      _$HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setRecipeToUnFavorite() {
+    final _$actionInfo = _$HomeControllerBaseActionController.startAction(
+        name: 'HomeControllerBase.setRecipeToUnFavorite');
+    try {
+      return super.setRecipeToUnFavorite();
+    } finally {
+      _$HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 drawerValue: ${drawerValue},
 detailsStepsValue: ${detailsStepsValue},
-detailsStepsIndex: ${detailsStepsIndex}
+detailsStepsIndex: ${detailsStepsIndex},
+isRecipeFavorire: ${isRecipeFavorire}
     ''';
   }
 }

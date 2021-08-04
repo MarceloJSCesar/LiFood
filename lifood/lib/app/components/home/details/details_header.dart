@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:lifood/app/config/app_textstyles.dart';
+import 'package:lifood/app/controllers/home/home_controller.dart';
 import 'package:typicons_flutter/typicons_flutter.dart';
 
 class DetailsHeader extends StatelessWidget {
@@ -7,13 +9,15 @@ class DetailsHeader extends StatelessWidget {
   final recipeImageUrl;
   final recipeTotalTime;
   final double recipeRating;
-  const DetailsHeader({
+  DetailsHeader({
     Key key,
     @required this.recipeName,
     @required this.recipeRating,
     @required this.recipeImageUrl,
     @required this.recipeTotalTime,
   }) : super(key: key);
+
+  HomeController _homeController = HomeController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +48,28 @@ class DetailsHeader extends StatelessWidget {
                     iconSize: 25,
                     onPressed: () => Navigator.of(context).pop(),
                   ),
-                  IconButton(
-                    color: Colors.red,
-                    icon: Icon(Icons.favorite),
-                    iconSize: 25,
-                    onPressed: () => print('putting in favorite food'),
+                  Observer(
+                    builder: (_) {
+                      return IconButton(
+                          color: _homeController.isRecipeFavorire
+                              ? Colors.red
+                              : Colors.white,
+                          icon: Icon(Icons.favorite),
+                          iconSize: 25,
+                          onPressed: _homeController.isRecipeFavorire
+                              ? () => _homeController.setRecipeToUnFavorite()
+                              : () {
+                                  _homeController.setRecipeToFavorite();
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      duration: Duration(seconds: 3),
+                                      backgroundColor: Colors.grey,
+                                      content:
+                                          Text('Recipe added to favorites'),
+                                    ),
+                                  );
+                                });
+                    },
                   ),
                 ],
               ),

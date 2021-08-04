@@ -30,4 +30,17 @@ abstract class HomeControllerBase with Store {
     detailsStepsIndex -= 1;
     detailsStepsValue -= 0.1;
   }
+
+  @observable
+  bool isRecipeFavorire = false;
+
+  @action
+  void setRecipeToFavorite() {
+    isRecipeFavorire = true;
+  }
+
+  @action
+  void setRecipeToUnFavorite() {
+    isRecipeFavorire = false;
+  }
 }
