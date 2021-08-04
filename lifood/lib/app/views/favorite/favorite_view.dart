@@ -75,8 +75,8 @@ class FavoriteView extends StatelessWidget {
                             horizontal: 10,
                             vertical: 40,
                           ),
-                          height: 140,
-                          width: 140,
+                          height: 60,
+                          width: 60,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(18),
                             image: DecorationImage(
